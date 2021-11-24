@@ -5,14 +5,16 @@ export const standard = defineScenario<Prisma.DemoCreateArgs>({
     one: {
       data: {
         title: 'String',
-        accepting: true,
+        url: 'String',
+        creator: 'String',
         space: { create: { title: 'String', accepting: true } },
       },
     },
     two: {
       data: {
         title: 'String',
-        accepting: true,
+        url: 'String',
+        creator: 'String',
         space: { create: { title: 'String', accepting: true } },
       },
     },

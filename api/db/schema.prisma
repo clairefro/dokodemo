@@ -14,7 +14,7 @@ generator client {
 model Space {
   id            String      @id @default(cuid())
   title         String
-  accepting     Boolean
+  accepting     Boolean     @default(true)
   demos         Demo[]
   createdAt     DateTime    @default(now())
 }
@@ -24,6 +24,7 @@ model Demo {
   space         Space       @relation(fields: [spaceId], references: [id])
   spaceId       String
   title         String
-  accepting     Boolean
+  url           String
+  creator       String
   createdAt     DateTime    @default(now())
 }

@@ -67,7 +67,8 @@ const DemosList = ({ demos }) => {
             <th>Id</th>
             <th>Space id</th>
             <th>Title</th>
-            <th>Accepting</th>
+            <th>Url</th>
+            <th>Creator</th>
             <th>Created at</th>
             <th>&nbsp;</th>
           </tr>
@@ -78,7 +79,8 @@ const DemosList = ({ demos }) => {
               <td>{truncate(demo.id)}</td>
               <td>{truncate(demo.spaceId)}</td>
               <td>{truncate(demo.title)}</td>
-              <td>{checkboxInputTag(demo.accepting)}</td>
+              <td>{truncate(demo.url)}</td>
+              <td>{truncate(demo.creator)}</td>
               <td>{timeTag(demo.createdAt)}</td>
               <td>
                 <nav className="rw-table-actions">

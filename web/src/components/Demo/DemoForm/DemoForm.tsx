@@ -4,7 +4,6 @@ import {
   FieldError,
   Label,
   TextField,
-  CheckboxField,
   Submit,
 } from '@redwoodjs/forms'
 
@@ -62,20 +61,36 @@ const DemoForm = (props) => {
         <FieldError name="title" className="rw-field-error" />
 
         <Label
-          name="accepting"
+          name="url"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Accepting
+          Url
         </Label>
-        <CheckboxField
-          name="accepting"
-          defaultChecked={props.demo?.accepting}
+        <TextField
+          name="url"
+          defaultValue={props.demo?.url}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
-        <FieldError name="accepting" className="rw-field-error" />
+        <FieldError name="url" className="rw-field-error" />
+
+        <Label
+          name="creator"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Creator
+        </Label>
+        <TextField
+          name="creator"
+          defaultValue={props.demo?.creator}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+        <FieldError name="creator" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit

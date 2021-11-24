@@ -14,7 +14,6 @@ export const schema = gql`
 
   input CreateSpaceInput {
     title: String!
-    accepting: Boolean!
   }
 
   input UpdateSpaceInput {

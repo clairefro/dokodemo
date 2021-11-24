@@ -4,7 +4,8 @@ export const schema = gql`
     space: Space!
     spaceId: String!
     title: String!
-    accepting: Boolean!
+    url: String!
+    creator: String!
     createdAt: DateTime!
   }
 
@@ -16,13 +17,15 @@ export const schema = gql`
   input CreateDemoInput {
     spaceId: String!
     title: String!
-    accepting: Boolean!
+    url: String!
+    creator: String!
   }
 
   input UpdateDemoInput {
     spaceId: String
     title: String
-    accepting: Boolean
+    url: String
+    creator: String
   }
 
   type Mutation {

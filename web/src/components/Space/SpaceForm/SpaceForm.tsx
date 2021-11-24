@@ -4,15 +4,14 @@ import {
   FieldError,
   Label,
   TextField,
-  CheckboxField,
   Submit,
 } from '@redwoodjs/forms'
 
-const formatDatetime = (value) => {
-  if (value) {
-    return value.replace(/:\d{2}\.\d{3}\w/, '')
-  }
-}
+// const formatDatetime = (value) => {
+//   if (value) {
+//     return value.replace(/:\d{2}\.\d{3}\w/, '')
+//   }
+// }
 
 const SpaceForm = (props) => {
   const onSubmit = (data) => {
@@ -45,27 +44,8 @@ const SpaceForm = (props) => {
         />
         <FieldError name="title" className="rw-field-error" />
 
-        <Label
-          name="accepting"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Accepting
-        </Label>
-        <CheckboxField
-          name="accepting"
-          defaultChecked={props.space?.accepting}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="accepting" className="rw-field-error" />
-
         <div className="rw-button-group">
-          <Submit
-            disabled={props.loading}
-            className="rw-button rw-button-blue"
-          >
+          <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save
           </Submit>
         </div>

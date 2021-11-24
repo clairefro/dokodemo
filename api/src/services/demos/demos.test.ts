@@ -19,13 +19,15 @@ describe('demos', () => {
       input: {
         spaceId: scenario.demo.two.spaceId,
         title: 'String',
-        accepting: true,
+        url: 'String',
+        creator: 'String',
       },
     })
 
     expect(result.spaceId).toEqual(scenario.demo.two.spaceId)
     expect(result.title).toEqual('String')
-    expect(result.accepting).toEqual(true)
+    expect(result.url).toEqual('String')
+    expect(result.creator).toEqual('String')
   })
 
   scenario('updates a demo', async (scenario: StandardScenario) => {

@@ -13,7 +13,8 @@ export const QUERY = gql`
       id
       spaceId
       title
-      accepting
+      url
+      creator
       createdAt
     }
   }
@@ -24,7 +25,8 @@ const UPDATE_DEMO_MUTATION = gql`
       id
       spaceId
       title
-      accepting
+      url
+      creator
       createdAt
     }
   }

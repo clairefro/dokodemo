@@ -65,8 +65,11 @@ const Demo = ({ demo }) => {
               <th>Title</th>
               <td>{demo.title}</td>
             </tr><tr>
-              <th>Accepting</th>
-              <td>{checkboxInputTag(demo.accepting)}</td>
+              <th>Url</th>
+              <td>{demo.url}</td>
+            </tr><tr>
+              <th>Creator</th>
+              <td>{demo.creator}</td>
             </tr><tr>
               <th>Created at</th>
               <td>{timeTag(demo.createdAt)}</td>

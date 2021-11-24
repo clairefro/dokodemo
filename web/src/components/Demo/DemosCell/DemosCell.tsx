@@ -11,7 +11,8 @@ export const QUERY = gql`
       id
       spaceId
       title
-      accepting
+      url
+      creator
       createdAt
     }
   }
