@@ -10,8 +10,8 @@ export const schema = gql`
   }
 
   type Query {
-    demos: [Demo!]! @requireAuth
-    demo(id: String!): Demo @requireAuth
+    demos: [Demo!]! @skipAuth
+    demo(id: String!): Demo @skipAuth
   }
 
   input CreateDemoInput {
@@ -29,8 +29,8 @@ export const schema = gql`
   }
 
   type Mutation {
-    createDemo(input: CreateDemoInput!): Demo! @requireAuth
-    updateDemo(id: String!, input: UpdateDemoInput!): Demo! @requireAuth
-    deleteDemo(id: String!): Demo! @requireAuth
+    createDemo(input: CreateDemoInput!): Demo! @skipAuth
+    updateDemo(id: String!, input: UpdateDemoInput!): Demo! @skipAuth
+    deleteDemo(id: String!): Demo! @skipAuth
   }
 `

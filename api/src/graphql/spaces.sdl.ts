@@ -8,8 +8,8 @@ export const schema = gql`
   }
 
   type Query {
-    spaces: [Space!]! @requireAuth
-    space(id: String!): Space @requireAuth
+    spaces: [Space!]! @skipAuth
+    space(id: String!): Space @skipAuth
   }
 
   input CreateSpaceInput {
@@ -22,8 +22,8 @@ export const schema = gql`
   }
 
   type Mutation {
-    createSpace(input: CreateSpaceInput!): Space! @requireAuth
-    updateSpace(id: String!, input: UpdateSpaceInput!): Space! @requireAuth
-    deleteSpace(id: String!): Space! @requireAuth
+    createSpace(input: CreateSpaceInput!): Space! @skipAuth
+    updateSpace(id: String!, input: UpdateSpaceInput!): Space! @skipAuth
+    deleteSpace(id: String!): Space! @skipAuth
   }
 `
