@@ -4,7 +4,7 @@ A virtual demo day app for asynchronous teams, powered by [Loom](https://www.loo
 
 Built with [RedwoodJS](https://redwoodjs.com/) and [Railway](https://railway.app/) (Postgres DB)
 
-## Requirements
+## Pre-reqs
 
 - `node`
 - `docker`
