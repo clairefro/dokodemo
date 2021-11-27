@@ -11,9 +11,25 @@ generator client {
 
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 // to create migrations for them and apply to your dev DB.
-// TODO: Please remove the following example:
+
+
+model User {
+  id             String      @id @default(cuid())
+  email          String      @unique
+  username       String      @unique
+  spaces         Space[]
+  demos          Demo[]
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
+}
+
+
 model Space {
   id            String      @id @default(cuid())
+  user          User        @relation(fields: [userId], references: [id])
+  userId        String
   title         String
   accepting     Boolean     @default(true)
   demos         Demo[]
@@ -24,18 +40,10 @@ model Demo {
   id            String      @id @default(cuid())
   space         Space       @relation(fields: [spaceId], references: [id])
   spaceId       String
+  user          User        @relation(fields: [userId], references: [id])
+  userId        String
   title         String
   url           String
   creator       String
   createdAt     DateTime    @default(now())
-}
-
-model User {
-  id             String      @id @default(cuid())
-  email          String      @unique
-  username       String      @unique
-  hashedPassword      String
-  salt                String
-  resetToken          String?
-  resetTokenExpiresAt DateTime?
 }
