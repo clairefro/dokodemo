@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "postgres:up": "docker-compose up -d",
-    "postgres:down": "docker-compose down"
+    "postgres:down": "docker-compose down",
+    "test": "yarn postgres:down && yarn postgres:up && yarn rw test"
   },
   "workspaces": {
     "packages": [
