@@ -6,7 +6,6 @@ export const standard = defineScenario<Prisma.DemoCreateArgs>({
       data: {
         title: 'String',
         url: 'String',
-        creator: 'String',
         space: {
           create: {
             title: 'String',
