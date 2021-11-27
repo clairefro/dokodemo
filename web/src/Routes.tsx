@@ -14,6 +14,11 @@ import SpacesLayout from 'src/layouts/SpacesLayout'
 const Routes = () => {
   return (
     <Router>
+      <Route path="/" page={HomePage} name="home" />
+      <Route path="/login" page={LoginPage} name="login" />
+      <Route path="/signup" page={SignupPage} name="signup" />
+      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       <Set wrap={DemosLayout}>
         <Route path="/demos/new" page={DemoNewDemoPage} name="newDemo" />
         <Route path="/demos/{id}/edit" page={DemoEditDemoPage} name="editDemo" />
