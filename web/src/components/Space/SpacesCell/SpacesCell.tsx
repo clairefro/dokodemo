@@ -9,6 +9,7 @@ export const QUERY = gql`
   query FindSpaces {
     spaces {
       id
+      userId
       title
       accepting
       createdAt

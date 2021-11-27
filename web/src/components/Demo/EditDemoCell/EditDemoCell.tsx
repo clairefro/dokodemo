@@ -12,9 +12,9 @@ export const QUERY = gql`
     demo: demo(id: $id) {
       id
       spaceId
+      userId
       title
       url
-      creator
       createdAt
     }
   }
@@ -24,9 +24,9 @@ const UPDATE_DEMO_MUTATION = gql`
     updateDemo(id: $id, input: $input) {
       id
       spaceId
+      userId
       title
       url
-      creator
       createdAt
     }
   }

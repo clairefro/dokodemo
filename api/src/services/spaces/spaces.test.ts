@@ -14,13 +14,13 @@ describe('spaces', () => {
     expect(result).toEqual(scenario.space.one)
   })
 
-  scenario('creates a space', async () => {
+  scenario('creates a space', async (scenario: StandardScenario) => {
     const result = await createSpace({
-      input: { title: 'String', accepting: true },
+      input: { userId: scenario.space.two.userId, title: 'String' },
     })
 
+    expect(result.userId).toEqual(scenario.space.two.userId)
     expect(result.title).toEqual('String')
-    expect(result.accepting).toEqual(true)
   })
 
   scenario('updates a space', async (scenario: StandardScenario) => {

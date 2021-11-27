@@ -59,6 +59,9 @@ const Space = ({ space }) => {
               <th>Id</th>
               <td>{space.id}</td>
             </tr><tr>
+              <th>User id</th>
+              <td>{space.userId}</td>
+            </tr><tr>
               <th>Title</th>
               <td>{space.title}</td>
             </tr><tr>

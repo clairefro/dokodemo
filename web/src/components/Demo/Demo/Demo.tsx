@@ -62,14 +62,14 @@ const Demo = ({ demo }) => {
               <th>Space id</th>
               <td>{demo.spaceId}</td>
             </tr><tr>
+              <th>User id</th>
+              <td>{demo.userId}</td>
+            </tr><tr>
               <th>Title</th>
               <td>{demo.title}</td>
             </tr><tr>
               <th>Url</th>
               <td>{demo.url}</td>
-            </tr><tr>
-              <th>Creator</th>
-              <td>{demo.creator}</td>
             </tr><tr>
               <th>Created at</th>
               <td>{timeTag(demo.createdAt)}</td>

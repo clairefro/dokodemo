@@ -44,6 +44,5 @@ model Demo {
   userId        String
   title         String
   url           String
-  creator       String
   createdAt     DateTime    @default(now())
 }

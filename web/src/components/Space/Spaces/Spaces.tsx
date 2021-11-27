@@ -65,6 +65,7 @@ const SpacesList = ({ spaces }) => {
         <thead>
           <tr>
             <th>Id</th>
+            <th>User id</th>
             <th>Title</th>
             <th>Accepting</th>
             <th>Created at</th>
@@ -75,6 +76,7 @@ const SpacesList = ({ spaces }) => {
           {spaces.map((space) => (
             <tr key={space.id}>
               <td>{truncate(space.id)}</td>
+              <td>{truncate(space.userId)}</td>
               <td>{truncate(space.title)}</td>
               <td>{checkboxInputTag(space.accepting)}</td>
               <td>{timeTag(space.createdAt)}</td>

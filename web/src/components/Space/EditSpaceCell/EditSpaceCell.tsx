@@ -11,6 +11,7 @@ export const QUERY = gql`
   query EditSpaceById($id: String!) {
     space: space(id: $id) {
       id
+      userId
       title
       accepting
       createdAt
@@ -21,6 +22,7 @@ const UPDATE_SPACE_MUTATION = gql`
   mutation UpdateSpaceMutation($id: String!, $input: UpdateSpaceInput!) {
     updateSpace(id: $id, input: $input) {
       id
+      userId
       title
       accepting
       createdAt

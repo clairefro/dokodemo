@@ -7,6 +7,7 @@ export const QUERY = gql`
   query FindSpaceById($id: String!) {
     space: space(id: $id) {
       id
+      userId
       title
       accepting
       createdAt

@@ -66,9 +66,9 @@ const DemosList = ({ demos }) => {
           <tr>
             <th>Id</th>
             <th>Space id</th>
+            <th>User id</th>
             <th>Title</th>
             <th>Url</th>
-            <th>Creator</th>
             <th>Created at</th>
             <th>&nbsp;</th>
           </tr>
@@ -78,9 +78,9 @@ const DemosList = ({ demos }) => {
             <tr key={demo.id}>
               <td>{truncate(demo.id)}</td>
               <td>{truncate(demo.spaceId)}</td>
+              <td>{truncate(demo.userId)}</td>
               <td>{truncate(demo.title)}</td>
               <td>{truncate(demo.url)}</td>
-              <td>{truncate(demo.creator)}</td>
               <td>{timeTag(demo.createdAt)}</td>
               <td>
                 <nav className="rw-table-actions">

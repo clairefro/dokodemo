@@ -6,6 +6,7 @@ import {
   TextField,
   Submit,
 } from '@redwoodjs/forms'
+import { useAuth } from '@redwoodjs/auth'
 
 const formatDatetime = (value) => {
   if (value) {
@@ -14,7 +15,13 @@ const formatDatetime = (value) => {
 }
 
 const DemoForm = (props) => {
+  const { currentUser } = useAuth()
+
   const onSubmit = (data) => {
+    data = {
+      ...data,
+      userId: currentUser.id
+    }
     props.onSave(data, props?.demo?.id)
   }
 
@@ -75,22 +82,6 @@ const DemoForm = (props) => {
           validation={{ required: true }}
         />
         <FieldError name="url" className="rw-field-error" />
-
-        <Label
-          name="creator"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Creator
-        </Label>
-        <TextField
-          name="creator"
-          defaultValue={props.demo?.creator}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="creator" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit

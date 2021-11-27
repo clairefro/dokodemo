@@ -4,17 +4,25 @@ import {
   FieldError,
   Label,
   TextField,
+  CheckboxField,
   Submit,
 } from '@redwoodjs/forms'
+import { useAuth } from '@redwoodjs/auth'
 
-// const formatDatetime = (value) => {
-//   if (value) {
-//     return value.replace(/:\d{2}\.\d{3}\w/, '')
-//   }
-// }
+const formatDatetime = (value) => {
+  if (value) {
+    return value.replace(/:\d{2}\.\d{3}\w/, '')
+  }
+}
 
 const SpaceForm = (props) => {
+  const { currentUser } = useAuth()
+
   const onSubmit = (data) => {
+    data = {
+      ...data,
+      userId: currentUser.id
+    }
     props.onSave(data, props?.space?.id)
   }
 
@@ -45,7 +53,10 @@ const SpaceForm = (props) => {
         <FieldError name="title" className="rw-field-error" />
 
         <div className="rw-button-group">
-          <Submit disabled={props.loading} className="rw-button rw-button-blue">
+          <Submit
+            disabled={props.loading}
+            className="rw-button rw-button-blue"
+          >
             Save
           </Submit>
         </div>

@@ -10,9 +10,9 @@ export const QUERY = gql`
     demos {
       id
       spaceId
+      userId
       title
       url
-      creator
       createdAt
     }
   }

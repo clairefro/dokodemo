@@ -41,6 +41,8 @@ export const deleteSpace = ({ id }: Prisma.SpaceWhereUniqueInput) => {
 }
 
 export const Space = {
+  user: (_obj, { root }: ResolverArgs<ReturnType<typeof space>>) =>
+    db.space.findUnique({ where: { id: root.id } }).user(),
   demos: (_obj, { root }: ResolverArgs<ReturnType<typeof space>>) =>
     db.space.findUnique({ where: { id: root.id } }).demos(),
 }

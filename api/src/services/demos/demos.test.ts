@@ -18,16 +18,16 @@ describe('demos', () => {
     const result = await createDemo({
       input: {
         spaceId: scenario.demo.two.spaceId,
+        userId: scenario.demo.two.userId,
         title: 'String',
         url: 'String',
-        creator: 'String',
       },
     })
 
     expect(result.spaceId).toEqual(scenario.demo.two.spaceId)
+    expect(result.userId).toEqual(scenario.demo.two.userId)
     expect(result.title).toEqual('String')
     expect(result.url).toEqual('String')
-    expect(result.creator).toEqual('String')
   })
 
   scenario('updates a demo', async (scenario: StandardScenario) => {
