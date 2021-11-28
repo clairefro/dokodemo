@@ -8,7 +8,7 @@ import {
 } from './users'
 import type { StandardScenario } from './users.scenarios'
 
-describe.only('users', () => {
+describe('users', () => {
   scenario('returns all users', async (scenario: StandardScenario) => {
     const result = await users()
 
