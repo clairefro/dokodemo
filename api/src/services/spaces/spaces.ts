@@ -1,7 +1,7 @@
 import type { Prisma } from '@prisma/client'
-import type { ResolverArgs } from '@redwoodjs/graphql-server'
-
+import { ResolverArgs } from '@redwoodjs/graphql-server'
 import { db } from 'src/lib/db'
+import { isOwner } from '../validators'
 
 export const spaces = () => {
   return db.space.findMany()
@@ -12,7 +12,6 @@ export const space = ({ id }: Prisma.SpaceWhereUniqueInput) => {
     where: { id },
   })
 }
-
 interface CreateSpaceArgs {
   input: Prisma.SpaceCreateInput
 }
@@ -27,14 +26,16 @@ interface UpdateSpaceArgs extends Prisma.SpaceWhereUniqueInput {
   input: Prisma.SpaceUpdateInput
 }
 
-export const updateSpace = ({ id, input }: UpdateSpaceArgs) => {
+export const updateSpace = async ({ id, input }: UpdateSpaceArgs) => {
+  await isOwner(id, space)
   return db.space.update({
     data: input,
     where: { id },
   })
 }
 
-export const deleteSpace = ({ id }: Prisma.SpaceWhereUniqueInput) => {
+export const deleteSpace = async ({ id }: Prisma.SpaceWhereUniqueInput) => {
+  await isOwner(id, space)
   return db.space.delete({
     where: { id },
   })

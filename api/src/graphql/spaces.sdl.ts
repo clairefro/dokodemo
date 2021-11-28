@@ -1,7 +1,7 @@
 export const schema = gql`
   type Space {
     id: String!
-    user: User!
+    user: PublicUser!
     userId: String!
     title: String!
     accepting: Boolean!

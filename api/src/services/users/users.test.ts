@@ -1,18 +1,40 @@
-import { users, user, createUser, updateUser, deleteUser } from './users'
+import {
+  users,
+  privateUser,
+  publicUser,
+  createUser,
+  updateUser,
+  deleteUser,
+} from './users'
 import type { StandardScenario } from './users.scenarios'
 
-describe('users', () => {
+describe.only('users', () => {
   scenario('returns all users', async (scenario: StandardScenario) => {
     const result = await users()
 
     expect(result.length).toEqual(Object.keys(scenario.user).length)
   })
 
-  scenario('returns a single user', async (scenario: StandardScenario) => {
-    const result = await user({ id: scenario.user.one.id })
+  scenario(
+    'privateUser returns a private user',
+    async (scenario: StandardScenario) => {
+      const result = await privateUser({ id: scenario.user.one.id })
 
-    expect(result).toEqual(scenario.user.one)
-  })
+      expect(result.id).toEqual(scenario.user.one.id)
+      expect(result.username).toEqual(scenario.user.one.username)
+      expect(result.email).toEqual(scenario.user.one.email)
+    }
+  )
+
+  scenario(
+    'publicUser returns a public user',
+    async (scenario: StandardScenario) => {
+      const result = await publicUser({ id: scenario.user.one.id })
+
+      expect(result.id).toEqual(scenario.user.one.id)
+      expect(result.username).toEqual(scenario.user.one.username)
+    }
+  )
 
   scenario('creates a user', async () => {
     const result = await createUser({
@@ -31,7 +53,7 @@ describe('users', () => {
   })
 
   scenario('updates a user', async (scenario: StandardScenario) => {
-    const original = await user({ id: scenario.user.one.id })
+    const original = await privateUser({ id: scenario.user.one.id })
     const result = await updateUser({
       id: original.id,
       input: { email: 'String22462222' },
@@ -42,7 +64,7 @@ describe('users', () => {
 
   scenario('deletes a user', async (scenario: StandardScenario) => {
     const original = await deleteUser({ id: scenario.user.one.id })
-    const result = await user({ id: original.id })
+    const result = await privateUser({ id: original.id })
 
     expect(result).toEqual(null)
   })

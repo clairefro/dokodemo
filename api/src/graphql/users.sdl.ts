@@ -11,9 +11,21 @@ export const schema = gql`
     resetTokenExpiresAt: DateTime
   }
 
+  type PublicUser {
+    id: String!
+    username: String!
+  }
+
+  type PrivateUser {
+    id: String!
+    email: String!
+    username: String!
+  }
+
   type Query {
-    users: [User!]! @requireAuth
-    user(id: String!): User @requireAuth
+    users: [PublicUser!]! @requireAuth
+    publicUser(id: String!): PublicUser @requireAuth
+    privateUser(id: String!): PrivateUser @requireAuth
   }
 
   input CreateUserInput {

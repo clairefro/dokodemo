@@ -1,9 +1,8 @@
 export const schema = gql`
   type Demo {
     id: String!
-    space: Space!
     spaceId: String!
-    user: User!
+    user: PublicUser!
     userId: String!
     title: String!
     url: String!

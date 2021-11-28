@@ -13,6 +13,29 @@ export const user = ({ id }: Prisma.UserWhereUniqueInput) => {
   })
 }
 
+export const publicUser = ({ id }: Prisma.UserWhereUniqueInput) => {
+  return db.user.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      username: true,
+    },
+  })
+}
+
+export const privateUser = ({ id }: Prisma.UserWhereUniqueInput) => {
+  return db.user.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      username: true,
+      email: true,
+      spaces: true,
+      demos: true,
+    },
+  })
+}
+
 interface CreateUserArgs {
   input: Prisma.UserCreateInput
 }

@@ -1,7 +1,8 @@
 import type { Prisma } from '@prisma/client'
-import type { ResolverArgs } from '@redwoodjs/graphql-server'
+import { AuthenticationError, ResolverArgs } from '@redwoodjs/graphql-server'
 
 import { db } from 'src/lib/db'
+import { isOwner } from '../validators'
 
 export const demos = () => {
   return db.demo.findMany()
@@ -27,14 +28,16 @@ interface UpdateDemoArgs extends Prisma.DemoWhereUniqueInput {
   input: Prisma.DemoUpdateInput
 }
 
-export const updateDemo = ({ id, input }: UpdateDemoArgs) => {
+export const updateDemo = async ({ id, input }: UpdateDemoArgs) => {
+  await isOwner(id, demo)
   return db.demo.update({
     data: input,
     where: { id },
   })
 }
 
-export const deleteDemo = ({ id }: Prisma.DemoWhereUniqueInput) => {
+export const deleteDemo = async ({ id }: Prisma.DemoWhereUniqueInput) => {
+  await isOwner(id, demo)
   return db.demo.delete({
     where: { id },
   })
