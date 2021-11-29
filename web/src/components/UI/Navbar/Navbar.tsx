@@ -6,9 +6,11 @@ import AuthOptions from './components/AuthOptions'
 const Navbar = () => {
   const { currentUser } = useAuth()
   return (
-    <nav>
-      <div className="flex justify-between bg-red-600">
-        <Link to={routes.home()}>dokodemo</Link>
+    <nav className="shadow-xl">
+      <div className="py-2 px-4 flex justify-between text-primary-500">
+        <div className="flex items-center font-semibold text-xl">
+          <Link to={routes.home()}>dokodemo</Link>
+        </div>
         {currentUser ? <LoggedInUser user={currentUser} /> : <AuthOptions />}
       </div>
     </nav>

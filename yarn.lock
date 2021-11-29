@@ -6426,6 +6426,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classd@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/classd/-/classd-1.0.0.tgz#06a6c6d5de2b5aeebd537b66b9e266eb703c3c49"
+  integrity sha512-jYvjTmEA+m6cLFrNKv9DQS0iPN80jPy/iZfLcdtDBO1SI9rhj2WxJfbxPzRMTmaw7iiIwbGiTeN5b0g6njfAeg==
+
 clean-css@^4.2.3:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.4.tgz#733bf46eba4e607c6891ea57c24a989356831178"

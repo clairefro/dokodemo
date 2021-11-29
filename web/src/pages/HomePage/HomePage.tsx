@@ -2,25 +2,18 @@ import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { useEffect } from 'react'
+import ButtonPrimary from '../../components/UI/blocks/buttons/ButtonPrimary'
+import ButtonSecondary from '../../components/UI/blocks/buttons/ButtonSecondary'
+
+const links = [
+  { route: routes.newDemo(), name: 'newDemo' },
+  { route: routes.demos(), name: 'demos' },
+  { route: routes.newSpace(), name: 'newSpace' },
+  { route: routes.spaces(), name: 'spaces' },
+]
 
 const HomePage = () => {
-  const { isAuthenticated, currentUser, logOut } = useAuth()
-
-  const links = [
-    { route: routes.home(), name: 'home' },
-    { route: routes.login(), name: 'login' },
-    { route: routes.signup(), name: 'signup' },
-    { route: routes.forgotPassword(), name: 'forgotPassword' },
-    { route: routes.resetPassword(), name: 'resetPassword' },
-    { route: routes.newDemo(), name: 'newDemo' },
-    { route: routes.demos(), name: 'demos' },
-    { route: routes.newSpace(), name: 'newSpace' },
-    { route: routes.spaces(), name: 'spaces' },
-  ]
-
-  const Logout = () => {
-    return <button onClick={logOut}>Logout</button>
-  }
+  const { currentUser } = useAuth()
 
   useEffect(() => {
     console.log({ currentUser })
@@ -34,13 +27,10 @@ const HomePage = () => {
         /* you should un-comment description and add a unique description, 155 characters or less
         You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
       />
-      <h1>HomePage</h1>
-      <p>
-        Find me in <code>./web/src/pages/HomePage/HomePage.tsx</code>
-      </p>
-      {isAuthenticated && <Logout />}
+      <br />
+      <ButtonPrimary>Primary</ButtonPrimary>
+      <ButtonSecondary>Secondary</ButtonSecondary>
 
-      <p>Links</p>
       {links.map((l) => (
         <div key={l.name}>
           <Link to={l.route}>{l.name}</Link>

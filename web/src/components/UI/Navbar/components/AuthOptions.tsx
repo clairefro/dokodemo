@@ -1,10 +1,19 @@
-import { Link, routes } from '@redwoodjs/router'
+import { routes, navigate } from '@redwoodjs/router'
+import ButtonPrimary from '../../blocks/buttons/ButtonPrimary'
+import ButtonSecondary from '../../blocks/buttons/ButtonSecondary'
 
 const AuthOptions = () => {
   return (
     <div>
-      <Link to={routes.signup()}>Signup</Link>
-      <Link to={routes.login()}>Login</Link>
+      <ButtonSecondary
+        className="mr-2"
+        onClick={() => navigate(routes.login())}
+      >
+        Login
+      </ButtonSecondary>
+      <ButtonPrimary onClick={() => navigate(routes.signup())}>
+        Signup
+      </ButtonPrimary>
     </div>
   )
 }

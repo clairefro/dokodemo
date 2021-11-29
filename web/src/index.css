@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
 /**
  * START --- TAILWIND GENERATOR EDIT
  *
@@ -11,3 +13,7 @@
 /**
  * END --- TAILWIND GENERATOR EDIT
  */
+
+html {
+  font-family: "Maven Pro";
+}
