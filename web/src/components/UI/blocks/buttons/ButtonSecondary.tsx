@@ -7,7 +7,7 @@ interface Custom {
 
 type Props = Custom & React.HTMLProps<HTMLButtonElement>
 
-const ButtonPrimary = ({ children, className, ...rest }: Props) => {
+const ButtonSecondary = ({ children, className, ...rest }: Props) => {
   const classes = classd`
   bg-transparent text-primary-500
   ${className}
@@ -19,4 +19,4 @@ const ButtonPrimary = ({ children, className, ...rest }: Props) => {
   )
 }
 
-export default ButtonPrimary
+export default ButtonSecondary

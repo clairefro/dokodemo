@@ -13,7 +13,7 @@ const LoggedInUser = ({ user }: Props) => {
 
   return (
     <div className="flex items-center">
-      <p className="mr-2 font-semibold">you = {user.username}</p>
+      <p className="mr-2 font-semibold">{user.username}</p>
       <Logout />
     </div>
   )

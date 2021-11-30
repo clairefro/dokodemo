@@ -16,4 +16,25 @@
 
 html {
   font-family: "Maven Pro";
+  @apply text-gray-900;
+}
+
+/* Custom Tailwind styles for RedwoodJS forms */
+
+.rw-field-error {
+  @apply text-red-600 mt-2 font-semibold text-sm;
+}
+
+.rw-input {
+  @apply mt-1 block w-full p-2 border-2 outline-none rounded-lg;
+  /* display: block;
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e2e8f0;
+  color: #4a5568;
+  border-radius: 0.25rem;
+  outline: none; */
 }

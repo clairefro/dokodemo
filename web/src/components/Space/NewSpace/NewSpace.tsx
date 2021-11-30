@@ -2,6 +2,7 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { navigate, routes } from '@redwoodjs/router'
 import SpaceForm from 'src/components/Space/SpaceForm'
+import FormContainer from '../../UI/blocks/forms/FormContainer'
 
 const CREATE_SPACE_MUTATION = gql`
   mutation CreateSpaceMutation($input: CreateSpaceInput!) {
@@ -27,14 +28,9 @@ const NewSpace = () => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New Space</h2>
-      </header>
-      <div className="rw-segment-main">
-        <SpaceForm onSave={onSave} loading={loading} error={error} />
-      </div>
-    </div>
+    <FormContainer formTitle="New Space">
+      <SpaceForm onSave={onSave} loading={loading} error={error} />
+    </FormContainer>
   )
 }
 

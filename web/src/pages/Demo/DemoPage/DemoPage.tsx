@@ -1,7 +1,7 @@
 import DemoCell from 'src/components/Demo/DemoCell'
 
 type DemoPageProps = {
-  id: String
+  id: string
 }
 
 const DemoPage = ({ id }: DemoPageProps) => {
