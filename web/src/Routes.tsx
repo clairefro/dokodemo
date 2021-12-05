@@ -10,7 +10,7 @@
 import { Set, Router, Route } from '@redwoodjs/router'
 import GlobalLayout from './layouts/GlobalLayout/GlobalLayout'
 import DemosLayout from 'src/layouts/DemosLayout'
-import SpacesLayout from 'src/layouts/SpacesLayout'
+import AuthLayout from './layouts/AuthLayout/AuthLayout'
 
 const Routes = () => {
   return (
@@ -23,15 +23,17 @@ const Routes = () => {
           <Route path="/demos/{id}" page={DemoDemoPage} name="demo" />
           <Route path="/demos" page={DemoDemosPage} name="demos" />
         </Set>
-        <Set wrap={SpacesLayout}>
-          <Route path="/spaces/new" page={SpaceNewSpacePage} name="newSpace" />
-          <Route path="/spaces/{id}/edit" page={SpaceEditSpacePage} name="editSpace" />
-          <Route path="/spaces/{id}" page={SpaceSpacePage} name="space" />
-          <Route path="/spaces" page={SpaceSpacesPage} name="spaces" />
+
+        <Route path="/spaces/new" page={SpaceNewSpacePage} name="newSpace" />
+        <Route path="/spaces/{id}/edit" page={SpaceEditSpacePage} name="editSpace" />
+        <Route path="/spaces/{id}" page={SpaceSpacePage} name="space" />
+        <Route path="/spaces" page={SpaceSpacesPage} name="spaces" />
+
+        <Set wrap={AuthLayout}>
+          <Route path="/login" page={LoginPage} name="login" />
+          <Route path="/signup" page={SignupPage} name="signup" />
+          <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
         </Set>
-        <Route path="/login" page={LoginPage} name="login" />
-        <Route path="/signup" page={SignupPage} name="signup" />
-        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
         <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
         <Route notfound page={NotFoundPage} />
       </GlobalLayout>
