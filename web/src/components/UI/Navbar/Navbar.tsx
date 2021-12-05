@@ -6,7 +6,7 @@ import AuthOptions from './components/AuthOptions'
 const Navbar = () => {
   const { currentUser } = useAuth()
   return (
-    <nav className="shadow-xl">
+    <nav className="shadow-xl w-full fixed bg-primary-50">
       <div className="py-2 px-4 flex justify-between text-primary-500">
         <div className="flex items-center font-semibold text-xl">
           <Link to={routes.home()}>dokodemo</Link>

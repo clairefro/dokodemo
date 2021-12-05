@@ -10,24 +10,12 @@ const DELETE_DEMO_MUTATION = gql`
   }
 `
 
-const jsonDisplay = (obj) => {
-  return (
-    <pre>
-      <code>{JSON.stringify(obj, null, 2)}</code>
-    </pre>
-  )
-}
-
 const timeTag = (datetime) => {
   return (
     <time dateTime={datetime} title={datetime}>
       {new Date(datetime).toUTCString()}
     </time>
   )
-}
-
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
 }
 
 const Demo = ({ demo }) => {
@@ -51,26 +39,33 @@ const Demo = ({ demo }) => {
     <>
       <div className="rw-segment">
         <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">Demo {demo.id} Detail</h2>
+          <h2 className="rw-heading rw-heading-secondary">
+            Demo {demo.id} Detail
+          </h2>
         </header>
         <table className="rw-table">
           <tbody>
             <tr>
               <th>Id</th>
               <td>{demo.id}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Space id</th>
               <td>{demo.spaceId}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>User id</th>
               <td>{demo.userId}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Title</th>
               <td>{demo.title}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Url</th>
               <td>{demo.url}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Created at</th>
               <td>{timeTag(demo.createdAt)}</td>
             </tr>

@@ -1,10 +1,11 @@
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import ButtonPrimary from '../../components/UI/blocks/buttons/ButtonPrimary'
 import ButtonSecondary from '../../components/UI/blocks/buttons/ButtonSecondary'
 
+import Loom from '../../components/Loom/Loom'
 const links = [
   { route: routes.newDemo(), name: 'newDemo' },
   { route: routes.demos(), name: 'demos' },
@@ -37,6 +38,8 @@ const HomePage = () => {
           <br />
         </div>
       ))}
+
+      <Loom src="https://www.loom.com/share/9dbb9879c0d34fc3a55f6673e50b1bd9" />
     </>
   )
 }

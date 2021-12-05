@@ -2235,6 +2235,11 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@loomhq/loom-embed@1.2.9":
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/@loomhq/loom-embed/-/loom-embed-1.2.9.tgz#d657b9936aa638157def26a2e2969b89c857611f"
+  integrity sha512-4smbEpbPuql5QGAbpY1MjKYr5nLDqzkNDnONSGl8V5BVkoBmkO6hJ5klITxcr1j850CSzCAt2KcZN7Znc3pqdw==
+
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.6.22.tgz#8a723157bf90e78f17dc0f27995398e6c731f1ba"

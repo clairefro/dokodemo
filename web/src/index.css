@@ -38,3 +38,7 @@ html {
   border-radius: 0.25rem;
   outline: none; */
 }
+
+.rw-segment-main {
+  @apply p-2 border-2 border-primary-500 rounded-b-lg;
+}

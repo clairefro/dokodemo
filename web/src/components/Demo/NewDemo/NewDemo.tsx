@@ -1,7 +1,9 @@
+import { FC } from 'react'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { navigate, routes } from '@redwoodjs/router'
 import DemoForm from 'src/components/Demo/DemoForm'
+import FormContainer from '../../UI/blocks/forms/FormContainer'
 
 const CREATE_DEMO_MUTATION = gql`
   mutation CreateDemoMutation($input: CreateDemoInput!) {
@@ -10,8 +12,11 @@ const CREATE_DEMO_MUTATION = gql`
     }
   }
 `
+interface Props {
+  spaceId: string
+}
 
-const NewDemo = () => {
+const NewDemo: FC<Props> = ({ spaceId }) => {
   const [createDemo, { loading, error }] = useMutation(CREATE_DEMO_MUTATION, {
     onCompleted: () => {
       toast.success('Demo created')
@@ -27,14 +32,14 @@ const NewDemo = () => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New Demo</h2>
-      </header>
-      <div className="rw-segment-main">
-        <DemoForm onSave={onSave} loading={loading} error={error} />
-      </div>
-    </div>
+    <FormContainer formTitle="Add a Demo">
+      <DemoForm
+        onSave={onSave}
+        loading={loading}
+        error={error}
+        spaceId={spaceId}
+      />
+    </FormContainer>
   )
 }
 

@@ -1,26 +1,28 @@
-import {
-  Form,
-  FormError,
-  FieldError,
-  Label,
-  TextField,
-  Submit,
-} from '@redwoodjs/forms'
+import { FC } from 'react'
+import { Form, FormError, FieldError, Label, TextField } from '@redwoodjs/forms'
 import { useAuth } from '@redwoodjs/auth'
+import ButtonPrimary from '../../UI/blocks/buttons/ButtonPrimary'
+import { Demo } from 'types/graphql'
 
-const formatDatetime = (value) => {
-  if (value) {
-    return value.replace(/:\d{2}\.\d{3}\w/, '')
-  }
+interface Props {
+  spaceId: string
+  demo?: Demo
+  loading?: boolean
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  error?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onSave: (input: any, id?: string) => void
 }
 
-const DemoForm = (props) => {
+const DemoForm: FC<Props> = (props) => {
+  const { spaceId } = props
   const { currentUser } = useAuth()
 
   const onSubmit = (data) => {
     data = {
       ...data,
-      userId: currentUser.id
+      spaceId,
+      userId: currentUser.id,
     }
     props.onSave(data, props?.demo?.id)
   }
@@ -34,22 +36,6 @@ const DemoForm = (props) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
-
-        <Label
-          name="spaceId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Space id
-        </Label>
-        <TextField
-          name="spaceId"
-          defaultValue={props.demo?.spaceId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="spaceId" className="rw-field-error" />
 
         <Label
           name="title"
@@ -72,7 +58,7 @@ const DemoForm = (props) => {
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Url
+          Loom Url
         </Label>
         <TextField
           name="url"
@@ -84,12 +70,9 @@ const DemoForm = (props) => {
         <FieldError name="url" className="rw-field-error" />
 
         <div className="rw-button-group">
-          <Submit
-            disabled={props.loading}
-            className="rw-button rw-button-blue"
-          >
+          <ButtonPrimary type="submit" disabled={props.loading}>
             Save
-          </Submit>
+          </ButtonPrimary>
         </div>
       </Form>
     </div>

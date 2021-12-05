@@ -13,6 +13,7 @@
     ]
   },
   "dependencies": {
+    "@loomhq/loom-embed": "1.2.9",
     "@redwoodjs/auth": "0.38.3",
     "@redwoodjs/forms": "0.38.3",
     "@redwoodjs/router": "0.38.3",
