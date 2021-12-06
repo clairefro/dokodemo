@@ -6,6 +6,7 @@ import { toast } from '@redwoodjs/web/toast'
 import { navigate, routes } from '@redwoodjs/router'
 
 import SpaceForm from 'src/components/Space/SpaceForm'
+import FormContainer from '../../UI/blocks/forms/FormContainer'
 
 export const QUERY = gql`
   query EditSpaceById($id: String!) {
@@ -40,7 +41,7 @@ export const Success = ({ space }: CellSuccessProps<EditSpaceById>) => {
   const [updateSpace, { loading, error }] = useMutation(UPDATE_SPACE_MUTATION, {
     onCompleted: () => {
       toast.success('Space updated')
-      navigate(routes.spaces())
+      navigate(routes.space({ id: space.id }))
     },
     onError: (error) => {
       toast.error(error.message)
@@ -52,13 +53,13 @@ export const Success = ({ space }: CellSuccessProps<EditSpaceById>) => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">Edit Space {space.id}</h2>
-      </header>
-      <div className="rw-segment-main">
-        <SpaceForm space={space} onSave={onSave} error={error} loading={loading} />
-      </div>
-    </div>
+    <FormContainer formTitle="Edit space">
+      <SpaceForm
+        space={space}
+        onSave={onSave}
+        error={error}
+        loading={loading}
+      />
+    </FormContainer>
   )
 }

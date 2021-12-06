@@ -16,11 +16,18 @@
 
 html {
   font-family: "Maven Pro";
-  @apply text-gray-900;
+  @apply text-gray-800;
 }
 
 button:disabled {
   @apply cursor-not-allowed
+}
+
+h1 {
+  @apply text-5xl mb-2 font-semibold
+}
+h2 {
+  @apply text-3xl mb-2 font-semibold
 }
 
 /* Custom Tailwind styles for RedwoodJS forms */
@@ -30,19 +37,10 @@ button:disabled {
 }
 
 .rw-input, input {
-  @apply mt-1 block w-full p-2 border-2 outline-none rounded-lg;
-  /* display: block;
-  margin-top: 0.5rem;
-  width: 100%;
-  padding: 0.5rem;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #e2e8f0;
-  color: #4a5568;
-  border-radius: 0.25rem;
-  outline: none; */
+  @apply mt-1 block w-full p-2 border-b-2 outline-none text-lg;
 }
 
 .rw-segment-main {
-  @apply p-2 border-2 border-primary-500 rounded-b-lg;
+  @apply p-4 border-2 border-primary-500 rounded-b-lg;
 }
+

@@ -13,7 +13,7 @@ const GlobalLayout = ({ children }: Props) => {
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
       <Navbar />
       <NavbarSpacer />
-      <main style={{ minHeight: 'calc(100vh - 90px)' }} className="p-4">
+      <main style={{ minHeight: 'calc(100vh - 90px)' }} className="py-4 my-6">
         {children}
       </main>
       <Footer />

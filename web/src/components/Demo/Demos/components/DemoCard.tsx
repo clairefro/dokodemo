@@ -1,0 +1,28 @@
+import { navigate, routes } from '@redwoodjs/router'
+import { useLoomOembed } from '../../../../hooks/useLoomOembed'
+import LoomPreview from './LoomPreview'
+
+const DemoCard = ({ demo }) => {
+  const { embed } = useLoomOembed(demo.url)
+  console.log({ demo })
+
+  return (
+    <>
+      <button
+        className="text-left"
+        onClick={() => navigate(routes.demo({ id: demo.id }))}
+      >
+        <div className="w-full grid grid-cols-2 gap-4 justify-between my-2 shadow-md">
+          <div className="p-4">
+            <p>{demo.title}</p>
+          </div>
+          <div className="max-w-xs">
+            <LoomPreview embed={embed} />
+          </div>
+        </div>
+      </button>
+    </>
+  )
+}
+
+export default DemoCard

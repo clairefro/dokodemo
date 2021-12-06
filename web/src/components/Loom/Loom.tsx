@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import classd from 'classd'
-import { oembed } from '@loomhq/loom-embed'
+import { useLoomOembed } from '../../hooks/useLoomOembed'
 
 interface Props {
   src: string
@@ -8,20 +8,17 @@ interface Props {
 }
 
 const Loom: FC<Props> = ({ src, className }) => {
-  const [html, setHtml] = useState<string | null>(null)
-  useEffect(() => {
-    const getOembed = async () => {
-      const res = await oembed(src)
-      setHtml(res.html)
-    }
-    getOembed()
-  }, [src])
+  const { html } = useLoomOembed(src)
   const classes = classd`
   w-full h-full
   ${className}
   `
   return (
-    <div className={classes} dangerouslySetInnerHTML={{ __html: html }}></div>
+    <div
+      className={classes}
+      style={{ maxWidth: 'calc(100vh + 100px)' }}
+      dangerouslySetInnerHTML={{ __html: html }}
+    ></div>
   )
 }
 

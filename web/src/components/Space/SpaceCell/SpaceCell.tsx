@@ -9,6 +9,14 @@ export const QUERY = gql`
       id
       userId
       title
+      demos {
+        id
+        spaceId
+        userId
+        title
+        url
+        createdAt
+      }
       accepting
       createdAt
     }

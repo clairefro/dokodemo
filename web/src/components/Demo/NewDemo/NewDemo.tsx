@@ -18,9 +18,11 @@ interface Props {
 
 const NewDemo: FC<Props> = ({ spaceId }) => {
   const [createDemo, { loading, error }] = useMutation(CREATE_DEMO_MUTATION, {
-    onCompleted: () => {
+    onCompleted: (e) => {
+      console.log(e)
       toast.success('Demo created')
-      navigate(routes.demos())
+      navigate(routes.space({ id: spaceId }))
+      window.location.reload()
     },
     onError: (error) => {
       toast.error(error.message)
@@ -32,7 +34,7 @@ const NewDemo: FC<Props> = ({ spaceId }) => {
   }
 
   return (
-    <FormContainer formTitle="Add a Demo">
+    <FormContainer formTitle="Add your Demo">
       <DemoForm
         onSave={onSave}
         loading={loading}

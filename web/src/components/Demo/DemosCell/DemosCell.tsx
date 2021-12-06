@@ -6,14 +6,19 @@ import { Link, routes } from '@redwoodjs/router'
 import Demos from 'src/components/Demo/Demos'
 
 export const QUERY = gql`
-  query FindDemos {
-    demos {
-      id
-      spaceId
-      userId
-      title
-      url
-      createdAt
+  query FindDemosBySpaceId($id: String!) {
+    space(id: $id) {
+      demos {
+        id
+        spaceId
+        userId
+        user {
+          username
+        }
+        title
+        url
+        createdAt
+      }
     }
   }
 `
@@ -24,10 +29,7 @@ export const Empty = () => {
   return (
     <div className="rw-text-center">
       {'No demos yet. '}
-      <Link
-        to={routes.newDemo()}
-        className="rw-link"
-      >
+      <Link to={routes.newDemo()} className="rw-link">
         {'Create one?'}
       </Link>
     </div>

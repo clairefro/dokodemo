@@ -1,6 +1,13 @@
+import React, { FC } from 'react'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { Link, routes, navigate } from '@redwoodjs/router'
+import { Demo as DemoI } from 'types/graphql'
+import { useAuth } from '@redwoodjs/auth'
+import ButtonPrimary from '../../UI/blocks/buttons/ButtonPrimary'
+import ButtonSecondary from '../../UI/blocks/buttons/ButtonSecondary'
+import ButtonWarn from '../../UI/blocks/buttons/ButtonWarn'
+import Loom from '../../Loom'
 
 const DELETE_DEMO_MUTATION = gql`
   mutation DeleteDemoMutation($id: String!) {
@@ -10,19 +17,19 @@ const DELETE_DEMO_MUTATION = gql`
   }
 `
 
-const timeTag = (datetime) => {
-  return (
-    <time dateTime={datetime} title={datetime}>
-      {new Date(datetime).toUTCString()}
-    </time>
-  )
+interface Props {
+  demo: DemoI
 }
+const Demo: FC<Props> = ({ demo }) => {
+  console.log({ demo })
+  const { currentUser } = useAuth()
 
-const Demo = ({ demo }) => {
+  const isOwner = currentUser.id === demo.userId
+
   const [deleteDemo] = useMutation(DELETE_DEMO_MUTATION, {
     onCompleted: () => {
       toast.success('Demo deleted')
-      navigate(routes.demos())
+      navigate(routes.space({ id: demo.spaceId }))
     },
     onError: (error) => {
       toast.error(error.message)
@@ -30,63 +37,54 @@ const Demo = ({ demo }) => {
   })
 
   const onDeleteClick = (id) => {
-    if (confirm('Are you sure you want to delete demo ' + id + '?')) {
+    if (
+      confirm(
+        `Are you sure you want to delete demo "${demo.title}" from this space?\n\nYour video will still be visible on Loom. See the Privacy notes in the footer if you want to fully delete this video.`
+      )
+    ) {
       deleteDemo({ variables: { id } })
     }
+  }
+  const buttonGroupClasses = `grid ${
+    isOwner ? 'md:grid-cols-3' : 'md:grid-cols-1'
+  } gap-2 justify-center`
+
+  const SubmittedBy = () => {
+    return (
+      <p className="mb-2 text-center">
+        submitted by{' '}
+        <span className="font-semibold text-primary-500">
+          {isOwner ? 'me' : demo.user.username}
+        </span>
+      </p>
+    )
   }
 
   return (
     <>
-      <div className="rw-segment">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
-            Demo {demo.id} Detail
-          </h2>
-        </header>
-        <table className="rw-table">
-          <tbody>
-            <tr>
-              <th>Id</th>
-              <td>{demo.id}</td>
-            </tr>
-            <tr>
-              <th>Space id</th>
-              <td>{demo.spaceId}</td>
-            </tr>
-            <tr>
-              <th>User id</th>
-              <td>{demo.userId}</td>
-            </tr>
-            <tr>
-              <th>Title</th>
-              <td>{demo.title}</td>
-            </tr>
-            <tr>
-              <th>Url</th>
-              <td>{demo.url}</td>
-            </tr>
-            <tr>
-              <th>Created at</th>
-              <td>{timeTag(demo.createdAt)}</td>
-            </tr>
-          </tbody>
-        </table>
+      <Loom className="mx-auto mb-4" src={demo.url} />
+      <div className="max-w-2xl mx-auto">
+        <SubmittedBy />
+        <div className={buttonGroupClasses}>
+          <ButtonPrimary
+            onClick={() => navigate(routes.space({ id: demo.spaceId }))}
+          >
+            {'<'} Back to space
+          </ButtonPrimary>
+          {isOwner && (
+            <>
+              <ButtonSecondary
+                onClick={() => navigate(routes.editDemo({ id: demo.id }))}
+              >
+                Edit
+              </ButtonSecondary>
+              <ButtonWarn onClick={() => onDeleteClick(demo.id)}>
+                Delete
+              </ButtonWarn>
+            </>
+          )}
+        </div>
       </div>
-      <nav className="rw-button-group">
-        <Link
-          to={routes.editDemo({ id: demo.id })}
-          className="rw-button rw-button-blue"
-        >
-          Edit
-        </Link>
-        <button
-          type="button"
-          className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(demo.id)}
-        >
-          Delete
-        </button>
-      </nav>
     </>
   )
 }

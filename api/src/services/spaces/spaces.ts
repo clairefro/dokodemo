@@ -7,7 +7,7 @@ export const spaces = () => {
   return db.space.findMany()
 }
 
-export const space = ({ id }: Prisma.SpaceWhereUniqueInput) => {
+export const space = async ({ id }: Prisma.SpaceWhereUniqueInput) => {
   return db.space.findUnique({
     where: { id },
   })

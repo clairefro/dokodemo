@@ -65,13 +65,19 @@ const DemoForm: FC<Props> = (props) => {
           defaultValue={props.demo?.url}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
+          validation={{
+            required: true,
+            pattern: {
+              value: /^https:\/\/www.loom.com\/share\//,
+              message: 'Please enter a loom video URL',
+            },
+          }}
         />
         <FieldError name="url" className="rw-field-error" />
 
         <div className="rw-button-group">
           <ButtonPrimary type="submit" disabled={props.loading}>
-            Save
+            Submit
           </ButtonPrimary>
         </div>
       </Form>

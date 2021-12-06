@@ -7,9 +7,9 @@ interface Custom {
 
 type Props = Custom & React.HTMLProps<HTMLButtonElement>
 
-const ButtonPrimary = ({ children, className, ...rest }: Props) => {
+const ButtonSecondary = ({ children, className, ...rest }: Props) => {
   const classes = classd`
-  bg-primary-500 text-primary-50 border-primary-500
+  bg-transparent text-red-500 border-red-500
   ${className}
   `
   return (
@@ -19,4 +19,4 @@ const ButtonPrimary = ({ children, className, ...rest }: Props) => {
   )
 }
 
-export default ButtonPrimary
+export default ButtonSecondary

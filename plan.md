@@ -5,3 +5,12 @@
 - optional password protect spaces
 
 - meta tags
+- remove spaces page/ edit pages
+
+homepage
+"powered by loom"
+async demo days for async teams
+
+footer
+
+add notice of how to remove

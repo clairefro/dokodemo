@@ -10,12 +10,12 @@ type Props = Custom
 
 const FormContainer: FC<Props> = ({ children, className, formTitle }) => {
   const classes = classd`
-  rounded-lg
+  rounded-lg max-w-xl mb-4
   ${className}
   `
   const Header = () => (
     <header className="p-4 bg-primary-500 text-primary-50 rounded-t-lg font-semibold">
-      <h2>{formTitle}</h2>
+      <h3>{formTitle}</h3>
     </header>
   )
 

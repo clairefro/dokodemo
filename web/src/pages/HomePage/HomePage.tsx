@@ -34,10 +34,14 @@ const HomePage = () => {
           <br />
         </div>
       ))}
+      <Link to={'/spaces/ckwid5f6o0023aph5u7gl2utp'}>EXAMPLE SPACE</Link>
 
       <SpaceNavigator />
 
-      <Loom src="https://www.loom.com/share/9dbb9879c0d34fc3a55f6673e50b1bd9" />
+      <Loom
+        className="mx-auto"
+        src="https://www.loom.com/share/9dbb9879c0d34fc3a55f6673e50b1bd9"
+      />
     </>
   )
 }

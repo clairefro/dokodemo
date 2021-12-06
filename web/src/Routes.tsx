@@ -7,34 +7,41 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
-import { Set, Router, Route } from '@redwoodjs/router'
-import GlobalLayout from './layouts/GlobalLayout/GlobalLayout'
-import DemosLayout from 'src/layouts/DemosLayout'
-import AuthLayout from './layouts/AuthLayout/AuthLayout'
+import { Set, Router, Route, Private } from '@redwoodjs/router'
+import GlobalLayout from './layouts/GlobalLayout'
+import PageLayout from 'src/layouts/PageLayout'
+import AuthLayout from './layouts/AuthLayout'
+import FullwidthLayout from './layouts/FullwidthLayout'
+import FormPageLayout from './layouts/FormPageLayout'
 
 const Routes = () => {
   return (
     <Router>
       <GlobalLayout>
-        <Route path="/" page={HomePage} name="home" />
-        <Set wrap={DemosLayout}>
+        <Set wrap={PageLayout}>
+          <Route path="/" page={HomePage} name="home" />
+          <Private unauthenticated="login">
+            <Route path="/demos" page={DemoDemosPage} name="demos" />
+
+            <Route path="/spaces/{id}" page={SpaceSpacePage} name="space" />
+            <Route path="/spaces" page={SpaceSpacesPage} name="spaces" />
+          </Private>
+        </Set>
+        <Set private unauthenticated="login" wrap={FormPageLayout}>
+          <Route path="/spaces/new" page={SpaceNewSpacePage} name="newSpace" />
+          <Route path="/spaces/{id}/edit" page={SpaceEditSpacePage} name="editSpace" />
           <Route path="/demos/new" page={DemoNewDemoPage} name="newDemo" />
           <Route path="/demos/{id}/edit" page={DemoEditDemoPage} name="editDemo" />
-          <Route path="/demos/{id}" page={DemoDemoPage} name="demo" />
-          <Route path="/demos" page={DemoDemosPage} name="demos" />
         </Set>
-
-        <Route path="/spaces/new" page={SpaceNewSpacePage} name="newSpace" />
-        <Route path="/spaces/{id}/edit" page={SpaceEditSpacePage} name="editSpace" />
-        <Route path="/spaces/{id}" page={SpaceSpacePage} name="space" />
-        <Route path="/spaces" page={SpaceSpacesPage} name="spaces" />
-
+        <Set private unauthenticated="login" wrap={FullwidthLayout}>
+          <Route path="/demos/{id}" page={DemoDemoPage} name="demo" />
+        </Set>
         <Set wrap={AuthLayout}>
           <Route path="/login" page={LoginPage} name="login" />
           <Route path="/signup" page={SignupPage} name="signup" />
           <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+          <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
         </Set>
-        <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
         <Route notfound page={NotFoundPage} />
       </GlobalLayout>
     </Router>

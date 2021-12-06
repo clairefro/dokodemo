@@ -1,7 +1,7 @@
 import SpaceCell from 'src/components/Space/SpaceCell'
 
 type SpacePageProps = {
-  id: String
+  id: string
 }
 
 const SpacePage = ({ id }: SpacePageProps) => {

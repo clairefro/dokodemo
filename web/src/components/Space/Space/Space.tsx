@@ -1,8 +1,11 @@
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { routes, navigate } from '@redwoodjs/router'
+import ButtonWarn from '../../UI/blocks/buttons/ButtonWarn'
 import ButtonSecondary from '../../UI/blocks/buttons/ButtonSecondary'
-import ButtonPrimary from '../../UI/blocks/buttons/ButtonPrimary'
+import { useAuth } from '@redwoodjs/auth'
+import Demos from '../../Demo/Demos'
+import NewDemo from '../../Demo/NewDemo'
 
 const DELETE_SPACE_MUTATION = gql`
   mutation DeleteSpaceMutation($id: String!) {
@@ -12,19 +15,10 @@ const DELETE_SPACE_MUTATION = gql`
   }
 `
 
-const timeTag = (datetime) => {
-  return (
-    <time dateTime={datetime} title={datetime}>
-      {new Date(datetime).toUTCString()}
-    </time>
-  )
-}
-
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
-}
-
 const Space = ({ space }) => {
+  const { currentUser } = useAuth()
+  const isOwner = currentUser.id === space.userId
+
   const [deleteSpace] = useMutation(DELETE_SPACE_MUTATION, {
     onCompleted: () => {
       toast.success('Space deleted')
@@ -36,54 +30,33 @@ const Space = ({ space }) => {
   })
 
   const onDeleteClick = (id) => {
-    if (confirm('Are you sure you want to delete space ' + id + '?')) {
+    if (confirm(`Are you sure you want to delete space "${space.title}"?`)) {
       deleteSpace({ variables: { id } })
     }
   }
 
   return (
     <>
-      <div className="rw-segment">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
-            Space {space.id} Detail
-          </h2>
-        </header>
-        <table className="rw-table">
-          <tbody>
-            <tr>
-              <th>Id</th>
-              <td>{space.id}</td>
-            </tr>
-            <tr>
-              <th>User id</th>
-              <td>{space.userId}</td>
-            </tr>
-            <tr>
-              <th>Title</th>
-              <td>{space.title}</td>
-            </tr>
-            <tr>
-              <th>Accepting</th>
-              <td>{checkboxInputTag(space.accepting)}</td>
-            </tr>
-            <tr>
-              <th>Created at</th>
-              <td>{timeTag(space.createdAt)}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="mb-4 flex">
+        <h1>{space.title}</h1>
+        <div>
+          {isOwner && (
+            <div className="grid grid-cols-2 gap-2 max-w-xs ml-4">
+              <ButtonSecondary
+                onClick={() => navigate(routes.editSpace({ id: space.id }))}
+              >
+                Edit
+              </ButtonSecondary>
+              <ButtonWarn onClick={() => onDeleteClick(space.id)}>
+                Delete
+              </ButtonWarn>
+            </div>
+          )}
+        </div>
       </div>
-      <nav className="rw-button-group">
-        <ButtonPrimary
-          onClick={() => navigate(routes.editSpace({ id: space.id }))}
-        >
-          Edit
-        </ButtonPrimary>
-        <ButtonSecondary onClick={() => onDeleteClick(space.id)}>
-          Delete
-        </ButtonSecondary>
-      </nav>
+      <NewDemo spaceId={space.id} />
+
+      <Demos demos={space.demos} />
     </>
   )
 }

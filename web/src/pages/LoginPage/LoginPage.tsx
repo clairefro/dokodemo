@@ -104,7 +104,7 @@ const LoginPage = () => {
         <div className="rw-login-link">
           <span>Don&apos;t have an account?</span>{' '}
           <Link to={routes.signup()} className="rw-link">
-            Sign up!
+            Sign up instantly!
           </Link>
         </div>
       </FormContainer>
