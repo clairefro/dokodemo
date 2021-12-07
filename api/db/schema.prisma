@@ -23,6 +23,7 @@ model User {
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
+  watchedDemos   WatchedDemo[]
 }
 
 
@@ -44,5 +45,15 @@ model Demo {
   userId        String
   title         String
   url           String
+  watchedDemos  WatchedDemo[]
+  createdAt     DateTime    @default(now())
+}
+
+model WatchedDemo {
+  id            String      @id @default(cuid())
+  userId        String
+  demoId        String
+  user          User        @relation(fields: [userId], references: [id])
+  demo          Demo        @relation(fields: [demoId], references: [id])
   createdAt     DateTime    @default(now())
 }

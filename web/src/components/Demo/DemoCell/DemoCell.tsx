@@ -16,6 +16,9 @@ export const QUERY = gql`
       url
       createdAt
     }
+    watched: watchedDemosByUserId(id: $id) {
+      id
+    }
   }
 `
 
