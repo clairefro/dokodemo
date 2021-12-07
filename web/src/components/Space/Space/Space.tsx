@@ -3,6 +3,7 @@ import { toast } from '@redwoodjs/web/toast'
 import { routes, navigate } from '@redwoodjs/router'
 import ButtonWarn from '../../UI/blocks/buttons/ButtonWarn'
 import ButtonSecondary from '../../UI/blocks/buttons/ButtonSecondary'
+import CopyClipboard from '../../UI/CopyClipboard/CopySpaceId'
 import { useAuth } from '@redwoodjs/auth'
 import Demos from '../../Demo/Demos'
 import NewDemo from '../../Demo/NewDemo'
@@ -37,7 +38,7 @@ const Space = ({ space }) => {
   const OwnerControls = () => {
     if (!isOwner) return null
     return (
-      <div className="grid grid-cols-2 gap-2 max-w-xs ml-4">
+      <div className="grid md:grid-cols-2 gap-2 max-w-xs ml-4">
         <ButtonSecondary
           onClick={() => navigate(routes.editSpace({ id: space.id }))}
         >
@@ -50,10 +51,19 @@ const Space = ({ space }) => {
 
   return (
     <>
-      <div className="mb-4 flex">
-        <h1>{space.title}</h1>
-        <div>
-          <OwnerControls />
+      <div>
+        <div className="mb-4 flex">
+          <h1>{space.title}</h1>
+          <div>
+            <OwnerControls />
+          </div>
+        </div>
+        <div className="mb-6">
+          <CopyClipboard
+            title="Share space code"
+            displayText={space.id}
+            value={space.id}
+          />
         </div>
       </div>
       <NewDemo spaceId={space.id} />

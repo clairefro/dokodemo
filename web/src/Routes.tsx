@@ -18,8 +18,13 @@ const Routes = () => {
   return (
     <Router>
       <GlobalLayout>
-        <Set wrap={PageLayout}>
+        <Set wrap={FullwidthLayout}>
           <Route path="/" page={HomePage} name="home" />
+          <Private unauthenticated="login">
+            <Route path="/demos/{id}" page={DemoDemoPage} name="demo" />
+          </Private>
+        </Set>
+        <Set wrap={PageLayout}>
           <Private unauthenticated="login">
             <Route path="/demos" page={DemoDemosPage} name="demos" />
 
@@ -33,9 +38,7 @@ const Routes = () => {
           <Route path="/demos/new" page={DemoNewDemoPage} name="newDemo" />
           <Route path="/demos/{id}/edit" page={DemoEditDemoPage} name="editDemo" />
         </Set>
-        <Set private unauthenticated="login" wrap={FullwidthLayout}>
-          <Route path="/demos/{id}" page={DemoDemoPage} name="demo" />
-        </Set>
+
         <Set wrap={AuthLayout}>
           <Route path="/login" page={LoginPage} name="login" />
           <Route path="/signup" page={SignupPage} name="signup" />

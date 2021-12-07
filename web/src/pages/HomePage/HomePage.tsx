@@ -1,16 +1,12 @@
 import { useAuth } from '@redwoodjs/auth'
-import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import React, { useEffect } from 'react'
 
 import Loom from '../../components/Loom/Loom'
-import SpaceNavigator from '../../components/UI/SpaceNavigator/SpaceNavigator'
-const links = [
-  { route: routes.newDemo(), name: 'newDemo' },
-  { route: routes.demos(), name: 'demos' },
-  { route: routes.newSpace(), name: 'newSpace' },
-  { route: routes.spaces(), name: 'spaces' },
-]
+import SpaceNavigator from '../../components/UI/SpaceNavigator'
+import ExampleBanner from '../../components/UI/ExampleBanner/ExampleBanner'
+import PoweredByLoom from './components/PoweredByLoom'
+import Section from '../../components/UI/blocks/sections/Section'
 
 const HomePage = () => {
   const { currentUser } = useAuth()
@@ -28,16 +24,30 @@ const HomePage = () => {
         You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
       />
 
-      {links.map((l) => (
-        <div key={l.name}>
-          <Link to={l.route}>{l.name}</Link>
-          <br />
+      <Section className="grid md:grid-cols-3 gap-6">
+        <div className="col-span-2">
+          <h2>Async demo days for async teams</h2>
+          <p>
+            Let your group know what you{"'"}ve been up to, in not-so-real-time
+          </p>
         </div>
-      ))}
-      <Link to={'/spaces/ckwid5f6o0023aph5u7gl2utp'}>EXAMPLE SPACE</Link>
+        <PoweredByLoom />
+      </Section>
 
-      <SpaceNavigator />
-
+      <div className="flex justify-center px-4">
+        <SpaceNavigator />
+      </div>
+      <ExampleBanner spaceId="ckwid5f6o0023aph5u7gl2utp" />
+      <Section>
+        <h2>Perfect for</h2>
+        <ul>
+          <li>Internal company demo days</li>
+          <li>Public expos</li>
+        </ul>
+      </Section>
+      <Section>
+        <h2>Features</h2>
+      </Section>
       <Loom
         className="mx-auto"
         src="https://www.loom.com/share/9dbb9879c0d34fc3a55f6673e50b1bd9"

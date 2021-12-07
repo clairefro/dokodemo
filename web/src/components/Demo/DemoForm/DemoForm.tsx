@@ -65,6 +65,7 @@ const DemoForm: FC<Props> = (props) => {
           defaultValue={props.demo?.url}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
+          placeholder="https://www.loom.com/share/abcxyz"
           validation={{
             required: true,
             pattern: {

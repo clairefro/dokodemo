@@ -63,6 +63,7 @@ const Demo: FC<Props> = ({ demo }) => {
   return (
     <>
       <Loom className="mx-auto mb-4" src={demo.url} />
+      <h1 className="text-center">{demo.title}</h1>
       <div className="max-w-2xl mx-auto">
         <SubmittedBy />
         <div className={buttonGroupClasses}>

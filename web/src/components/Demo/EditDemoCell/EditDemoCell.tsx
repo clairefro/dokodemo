@@ -42,7 +42,7 @@ export const Success = ({ demo }: CellSuccessProps<EditDemoById>) => {
   const [updateDemo, { loading, error }] = useMutation(UPDATE_DEMO_MUTATION, {
     onCompleted: () => {
       toast.success('Demo updated')
-      navigate(routes.demos())
+      navigate(routes.demo({ id: demo.id }))
     },
     onError: (error) => {
       toast.error(error.message)
