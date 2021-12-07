@@ -14,9 +14,9 @@ const CREATE_SPACE_MUTATION = gql`
 
 const NewSpace = () => {
   const [createSpace, { loading, error }] = useMutation(CREATE_SPACE_MUTATION, {
-    onCompleted: () => {
+    onCompleted: ({ createSpace }) => {
       toast.success('Space created')
-      navigate(routes.spaces())
+      navigate(routes.space({ id: createSpace.id }))
     },
     onError: (error) => {
       toast.error(error.message)
