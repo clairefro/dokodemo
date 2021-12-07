@@ -1,4 +1,4 @@
-import { Link, navigate, routes } from '@redwoodjs/router'
+import { Link, routes } from '@redwoodjs/router'
 import { useRef } from 'react'
 import {
   Form,
@@ -7,20 +7,15 @@ import {
   PasswordField,
   FieldError,
 } from '@redwoodjs/forms'
-import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 import { useEffect } from 'react'
 import FormContainer from '../../components/UI/blocks/forms/FormContainer'
 import ButtonPrimary from '../../components/UI/blocks/buttons/ButtonPrimary'
+import { useAuthWithRedirectTo } from '../../hooks/useAuthWithRedirectTo'
 const LoginPage = () => {
-  const { isAuthenticated, logIn } = useAuth()
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate(routes.home())
-    }
-  }, [isAuthenticated])
+  // const { isAuthenticated, logIn } = useAuth()
+  const { redirectTo, logIn } = useAuthWithRedirectTo()
 
   const usernameRef = useRef<HTMLInputElement>()
   useEffect(() => {
@@ -103,7 +98,7 @@ const LoginPage = () => {
 
         <div className="rw-login-link">
           <span>Don&apos;t have an account?</span>{' '}
-          <Link to={routes.signup()} className="rw-link">
+          <Link to={routes.signup(redirectTo ? { redirectTo } : undefined)}>
             Sign up instantly!
           </Link>
         </div>

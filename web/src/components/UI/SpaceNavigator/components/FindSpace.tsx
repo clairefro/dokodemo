@@ -3,7 +3,7 @@ import { routes, navigate } from '@redwoodjs/router'
 import ButtonSecondary from '../../blocks/buttons/ButtonSecondary'
 
 const SpaceNavigator = () => {
-  const [id, setId] = useState<string | null>(null)
+  const [id, setId] = useState<string>('')
 
   const onClick = () => {
     navigate(routes.space({ id }))
@@ -23,7 +23,7 @@ const SpaceNavigator = () => {
       />
       <ButtonSecondary
         disabled={!id}
-        className={id ? 'block' : 'hidden'}
+        className={id.length ? 'block' : 'hidden'}
         onClick={onClick}
       >
         Join space

@@ -34,25 +34,25 @@ const Space = ({ space }) => {
       deleteSpace({ variables: { id } })
     }
   }
+  const OwnerControls = () => {
+    if (!isOwner) return null
+    return (
+      <div className="grid grid-cols-2 gap-2 max-w-xs ml-4">
+        <ButtonSecondary
+          onClick={() => navigate(routes.editSpace({ id: space.id }))}
+        >
+          Edit
+        </ButtonSecondary>
+        <ButtonWarn onClick={() => onDeleteClick(space.id)}>Delete</ButtonWarn>
+      </div>
+    )
+  }
 
   return (
     <>
       <div className="mb-4 flex">
         <h1>{space.title}</h1>
-        <div>
-          {isOwner && (
-            <div className="grid grid-cols-2 gap-2 max-w-xs ml-4">
-              <ButtonSecondary
-                onClick={() => navigate(routes.editSpace({ id: space.id }))}
-              >
-                Edit
-              </ButtonSecondary>
-              <ButtonWarn onClick={() => onDeleteClick(space.id)}>
-                Delete
-              </ButtonWarn>
-            </div>
-          )}
-        </div>
+        <OwnerControls />
       </div>
       <NewDemo spaceId={space.id} />
 
