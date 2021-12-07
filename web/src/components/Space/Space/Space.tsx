@@ -52,7 +52,9 @@ const Space = ({ space }) => {
     <>
       <div className="mb-4 flex">
         <h1>{space.title}</h1>
-        <OwnerControls />
+        <div>
+          <OwnerControls />
+        </div>
       </div>
       <NewDemo spaceId={space.id} />
 

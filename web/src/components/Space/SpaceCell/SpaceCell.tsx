@@ -13,6 +13,10 @@ export const QUERY = gql`
         id
         spaceId
         userId
+        user {
+          id
+          username
+        }
         title
         url
         createdAt
