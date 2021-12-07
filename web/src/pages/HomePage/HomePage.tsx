@@ -63,7 +63,7 @@ const HomePage = () => {
       </Section>
       <Loom
         className="mx-auto"
-        src="https://www.loom.com/share/9dbb9879c0d34fc3a55f6673e50b1bd9"
+        src="https://www.loom.com/share/fa654b27f6f745ab933559d2c0a6dd2c"
       />
     </>
   )
