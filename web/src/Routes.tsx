@@ -24,6 +24,12 @@ const Routes = () => {
             <Route path="/demos/{id}" page={DemoDemoPage} name="demo" />
           </Private>
         </Set>
+        <Set private unauthenticated="login" wrap={FormPageLayout}>
+          <Route path="/spaces/new" page={SpaceNewSpacePage} name="newSpace" />
+          <Route path="/spaces/{id}/edit" page={SpaceEditSpacePage} name="editSpace" />
+          <Route path="/demos/new" page={DemoNewDemoPage} name="newDemo" />
+          <Route path="/demos/{id}/edit" page={DemoEditDemoPage} name="editDemo" />
+        </Set>
         <Set wrap={PageLayout}>
           <Route path="/about" page={AboutPage} name="about" />
           <Private unauthenticated="login">
@@ -32,12 +38,6 @@ const Routes = () => {
             <Route path="/spaces/{id}" page={SpaceSpacePage} name="space" />
             <Route path="/spaces" page={SpaceSpacesPage} name="spaces" />
           </Private>
-        </Set>
-        <Set private unauthenticated="login" wrap={FormPageLayout}>
-          <Route path="/spaces/new" page={SpaceNewSpacePage} name="newSpace" />
-          <Route path="/spaces/{id}/edit" page={SpaceEditSpacePage} name="editSpace" />
-          <Route path="/demos/new" page={DemoNewDemoPage} name="newDemo" />
-          <Route path="/demos/{id}/edit" page={DemoEditDemoPage} name="editDemo" />
         </Set>
 
         <Set wrap={AuthLayout}>

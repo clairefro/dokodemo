@@ -24,7 +24,7 @@ const HomePage = () => {
       <div className="flex justify-center px-4">
         <SpaceNavigator />
       </div>
-      <ExampleBanner spaceId="ckwid5f6o0023aph5u7gl2utp" />
+      <ExampleBanner spaceId={process.env.REDWOOD_ENV_EXAMPLE_SPACE_ID} />
       <Section className="grid md:grid-cols-2 gap-6">
         <p className="mr-4">
           <span className="text-primary-500 font-semibold">dokodemo</span> is a
