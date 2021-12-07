@@ -1,3 +1,5 @@
+import { MetaTags } from '@redwoodjs/web'
+
 import { Toaster } from '@redwoodjs/web/toast'
 import Navbar from '../../components/UI/Navbar/Navbar'
 import Footer from '../../components/UI/Footer/Footer'
@@ -10,6 +12,10 @@ type Props = {
 const GlobalLayout = ({ children }: Props) => {
   return (
     <>
+      <MetaTags
+        title="dokodemo"
+        description="Async demo days for async teams."
+      />
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
       <Navbar />
       <NavbarSpacer />

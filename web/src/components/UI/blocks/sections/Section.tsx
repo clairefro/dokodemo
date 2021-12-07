@@ -7,14 +7,14 @@ interface Props {
 
 const Section: FC<Props> = ({ className, children, ...rest }) => {
   const classes = classd`
-  max-w-6xl px-4 my-6
+  max-w-5xl px-4 my-4 md:my-8
   ${className}
   `
   return (
     <div className="flex justify-center">
-      <div {...rest} className={classes}>
+      <section {...rest} className={classes}>
         {children}
-      </div>
+      </section>
     </div>
   )
 }

@@ -25,6 +25,7 @@ const Routes = () => {
           </Private>
         </Set>
         <Set wrap={PageLayout}>
+          <Route path="/about" page={AboutPage} name="about" />
           <Private unauthenticated="login">
             <Route path="/demos" page={DemoDemosPage} name="demos" />
 

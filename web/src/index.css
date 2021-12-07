@@ -31,7 +31,11 @@ h2 {
 }
 
 ul {
-  @apply list-disc
+  @apply list-disc list-inside
+}
+
+p {
+  @apply mb-2
 }
 /* Custom Tailwind styles for RedwoodJS forms */
 

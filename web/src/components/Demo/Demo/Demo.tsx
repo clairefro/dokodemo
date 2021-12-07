@@ -1,7 +1,8 @@
+import { MetaTags } from '@redwoodjs/web'
 import React, { FC } from 'react'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
-import { Link, routes, navigate } from '@redwoodjs/router'
+import { routes, navigate } from '@redwoodjs/router'
 import { Demo as DemoI } from 'types/graphql'
 import { useAuth } from '@redwoodjs/auth'
 import ButtonPrimary from '../../UI/blocks/buttons/ButtonPrimary'
@@ -62,6 +63,10 @@ const Demo: FC<Props> = ({ demo }) => {
 
   return (
     <>
+      <MetaTags
+        title={demo.title}
+        description={`Submitted by ${demo.user.username}`}
+      />
       <Loom className="mx-auto mb-4" src={demo.url} />
       <h1 className="text-center">{demo.title}</h1>
       <div className="max-w-2xl mx-auto">

@@ -1,7 +1,4 @@
-import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
-import React, { useEffect } from 'react'
-
 import Loom from '../../components/Loom/Loom'
 import SpaceNavigator from '../../components/UI/SpaceNavigator'
 import ExampleBanner from '../../components/UI/ExampleBanner/ExampleBanner'
@@ -9,26 +6,16 @@ import PoweredByLoom from './components/PoweredByLoom'
 import Section from '../../components/UI/blocks/sections/Section'
 
 const HomePage = () => {
-  const { currentUser } = useAuth()
-
-  useEffect(() => {
-    console.log({ currentUser })
-  }, [currentUser])
-
   return (
     <>
-      <MetaTags
-        title="Home"
-        // description="Home description"
-        /* you should un-comment description and add a unique description, 155 characters or less
-        You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
-      />
+      <MetaTags title="Home" description="Async demo days for async teams." />
 
       <Section className="grid md:grid-cols-3 gap-6">
         <div className="col-span-2">
           <h2>Async demo days for async teams</h2>
-          <p>
-            Let your group know what you{"'"}ve been up to, in not-so-real-time
+          <p className="max-w-md">
+            Virtual show and tell spaces to connect with team members, no matter
+            where they are or when they're awake
           </p>
         </div>
         <PoweredByLoom />
@@ -38,15 +25,41 @@ const HomePage = () => {
         <SpaceNavigator />
       </div>
       <ExampleBanner spaceId="ckwid5f6o0023aph5u7gl2utp" />
-      <Section>
-        <h2>Perfect for</h2>
-        <ul>
-          <li>Internal company demo days</li>
-          <li>Public expos</li>
-        </ul>
+      <Section className="grid md:grid-cols-2 gap-6">
+        <p className="mr-4">
+          <span className="text-primary-500 font-semibold">dokodemo</span> is a
+          not-so-real-time watering hole for groups to organize virtual
+          asynchronous demo days. Demo spaces can be shared with the group so
+          everyone can get up to speed on their own time while still getting to
+          connect with one another with kudos, jokes and questions - right
+          inside the demos.
+        </p>
+        <div>
+          <h2>Perfect for</h2>
+          <ul>
+            <li>Internal company demo days</li>
+            <li>External company demo days</li>
+            <li>Public expos</li>
+          </ul>
+        </div>
       </Section>
-      <Section>
-        <h2>Features</h2>
+      <Section className="w-full grid md:grid-cols-2 gap-6">
+        <div>
+          <h2>Features</h2>
+          <ul>
+            <li>Create demo spaces and invite team members</li>
+            <li>Add comments, reactions, and video replies to demos</li>
+            <li>Keep it human - see people's faces when they present</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Coming soon...</h2>
+          <ul>
+            <li>Organization level sign-on (SSO)</li>
+            <li>View and search archived demo spaces</li>
+            <li>Analytics reports for space organizers</li>
+          </ul>
+        </div>
       </Section>
       <Loom
         className="mx-auto"

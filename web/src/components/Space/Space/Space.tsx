@@ -1,3 +1,4 @@
+import { MetaTags } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { routes, navigate } from '@redwoodjs/router'
@@ -51,6 +52,10 @@ const Space = ({ space }) => {
 
   return (
     <>
+      <MetaTags
+        title={space.title}
+        description="Async demo days for async teams."
+      />
       <div>
         <div className="mb-4 flex">
           <h1>{space.title}</h1>
